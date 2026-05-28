@@ -6,13 +6,13 @@ import { MaskedTextInput } from "react-native-mask-text";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import Estilo from "../Estilo/index";
 import Base from "../Utilitarios/index";
-import { getPessoas, deletePessoa , updatePessoa, adicionarPessoa} from "../Service/Pessoa";
+import { getAnimais, deleteAnimal, updateAnimal, adicionarAnimal } from "../Service/Animal";
 
 export default function Animal(props) {
 
-    useEffect(() => {
-        ListarPessoas();
-    }, []);
+useEffect(() => {
+    ListarAnimais();
+}, []);
 
     const [idanimal, setIdanimal] = useState(null); 
     const [nome, setNome] = useState(animais?.nome || "");
@@ -20,9 +20,12 @@ export default function Animal(props) {
     const [peso, setPeso] = useState(animais?.peso || "");
     const [altura, setAltura] = useState(animais?.altura || "");
 
-    const ListarPessoas = async() => {
-        setPessoas(await getPessoas());
-    }
+    
+const ListarAnimais = async () => {
+    const dados = await getAnimais();
+    setAnimais(dados);
+}
+
 
      const setPessoa = async() => {
         const resposta = await fetch ( Base + 'adicionarAnimal', {
