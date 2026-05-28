@@ -147,6 +147,5 @@ const ListarAnimais = async () => {
                 </View>
             </View>
 
-
      )
 }
